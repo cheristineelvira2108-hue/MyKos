@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyKos – Prototype aplikasi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap">
+<style>
+:root{--bg:#fff;--card:#fff;--tx:#172B4D;--mu:#6B7A99;--pr:#2F80ED;--pt:#1A66D0;--on:#fff;--ps:#EAF3FF;--ac:#F2994A;--px:#C25E0A;--bd:#E1EAF7;--ok:#1A66D0;--okb:#EAF3FF;--wn:#9A4A06;--wnb:#FEF1E2;--page:#fff;--sh:0 2px 14px rgba(23,43,77,.07);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{--H:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));background:var(--page)}
+body{margin:0;font:500 16px/1.55 Nunito,system-ui,sans-serif;color:var(--tx);display:grid;place-items:center;min-height:var(--H)}
+button{font:inherit;cursor:pointer;color:inherit;border:0;background:none}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:13px 16px;width:100%;min-width:0}
+:focus-visible{outline:3px solid var(--pr);outline-offset:2px}
+svg.i{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ph{width:min(400px,100%);height:min(840px,var(--H));display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--bd);border-radius:32px;overflow:hidden;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.18)}
+@media(max-width:480px){.ph{border-radius:0;border:0;height:var(--H)}}
+.sc{flex:1;overflow-y:auto;padding:24px 20px 28px;display:grid;gap:28px;align-content:start}
+.nv{display:grid;grid-template-columns:repeat(5,1fr);background:var(--card);padding:6px 6px 8px;box-shadow:0 -2px 14px rgba(19,34,79,.06)}
+.nv button{padding:8px 0;font-size:12px;font-weight:700;color:var(--mu);display:grid;gap:3px;justify-items:center;border-radius:14px}
+.nv .on{color:var(--pr)}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.2}h1{font-size:26px}h2{font-size:22px}h3{font-size:17px}
+.mu{color:var(--mu)}.sm{font-size:14px}.xs{font-size:13px}
+.g{display:grid;gap:14px}.row{display:flex;gap:12px;align-items:center}.sp{justify-content:space-between}.wr{flex-wrap:wrap}
+.b{border-radius:14px;padding:0 18px;min-height:50px;font-weight:800;background:var(--pr);color:var(--on);width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.b.s{background:var(--ps);color:var(--pr)}.b.o{background:var(--card);border:1px solid var(--bd)}.b.q{width:auto;min-height:44px}
+.ib{width:46px;height:46px;border-radius:50%;background:var(--card);box-shadow:var(--sh);display:grid;place-items:center}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:20px;box-shadow:var(--sh);display:grid;gap:14px}
+.kc{background:var(--card);border:1px solid var(--bd);border-radius:20px;box-shadow:var(--sh);overflow:hidden;cursor:pointer}
+.kc .im{height:120px;display:grid;place-items:center;background:var(--ps);color:var(--pr);position:relative}
+.kc .im .ib{position:absolute;right:12px;top:12px;width:40px;height:40px;color:var(--mu)}.kc .im .ib.f{color:var(--pr)}
+.kc .cb{padding:16px 18px 20px;display:grid;gap:6px}
+.vf{display:inline-flex;gap:5px;align-items:center;color:var(--pt);font-weight:700;font-size:13px}
+.pc{color:var(--px);font-weight:800;font-size:18px}.pc small{font-size:13px;color:var(--mu);font-weight:600}
+.hs{display:flex;gap:16px;overflow-x:auto;padding:2px 20px 8px;margin:0 -20px;scroll-snap-type:x mandatory}.hs .kc{min-width:240px;scroll-snap-align:start}
+.chip{border-radius:99px;padding:9px 16px;font-weight:700;font-size:14px;background:var(--card);border:1px solid var(--bd)}
+.chip[aria-pressed=true]{background:var(--pr);color:var(--on);border-color:var(--pr)}
+.q4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 8px}
+.q4 button{display:grid;gap:8px;justify-items:center;font-size:12.5px;font-weight:700}
+.q4 span{width:54px;height:54px;border-radius:50%;background:var(--ps);color:var(--pr);display:grid;place-items:center}
+.sb{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:4px 6px 4px 16px;color:var(--mu)}
+.sb input{border:0;background:none;padding:12px 4px;box-shadow:none}
+.ban{background:var(--pr);color:var(--on);border-radius:22px;padding:22px;display:grid;gap:8px}
+.al{border-radius:14px;padding:14px 16px;background:var(--wnb);color:var(--wn);font-weight:700;font-size:14px}
+.ok{border-radius:14px;padding:14px 16px;background:var(--okb);color:var(--ok);font-weight:700;font-size:14px}
+.pano{overflow-x:auto;border-radius:16px}.pano div{width:300%;height:150px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;font-weight:800;background:var(--ps);color:var(--pr)}.pano span{display:grid;place-items:center}
+table{border-collapse:collapse;width:100%}td{padding:11px 0;border-bottom:1px solid var(--bd);font-size:15px}td:last-child{text-align:right;font-weight:700}tr:last-child td{border:0}
+.msgs{display:grid;gap:10px;align-content:start}.m{padding:12px 16px;border-radius:18px;max-width:85%}.m.u{background:var(--pr);color:var(--on);justify-self:end}.m.o{background:var(--card);box-shadow:var(--sh)}.m.x{background:var(--wnb);color:var(--wn);font-weight:700;max-width:100%;font-size:14px}
+#sh{position:absolute;inset:0;background:rgba(10,16,40,.45);display:flex;align-items:flex-end;z-index:5}
+#sh>div{background:var(--bg);width:100%;max-height:90%;overflow:auto;border-radius:28px 28px 0 0;padding:24px 20px 28px;display:grid;gap:18px}
+#ts{position:absolute;left:20px;right:20px;bottom:92px;background:var(--tx);color:var(--bg);border-radius:14px;padding:14px 16px;font-weight:700;font-size:14px;z-index:6}
+.bar{position:sticky;bottom:-28px;margin:0 -20px -28px;background:var(--card);padding:14px 20px;box-shadow:0 -2px 14px rgba(19,34,79,.07);display:flex;align-items:center;gap:14px}
+ol.st{list-style:none;margin:0;padding:0;display:grid;gap:12px}ol.st li{border-radius:16px;padding:14px 16px;background:var(--card);box-shadow:var(--sh);opacity:.5}ol.st .d,ol.st .c{opacity:1}ol.st .c{box-shadow:0 0 0 2px var(--pr)}ol.st .d b::before{content:"✓ ";color:var(--ok)}
+.sg{display:grid;grid-template-columns:1fr 1fr;background:var(--ps);border-radius:14px;padding:4px}.sg button{padding:10px;border-radius:11px;font-weight:700;color:var(--mu)}.sg .on{background:var(--card);color:var(--pr);box-shadow:var(--sh)}
+.lb{display:grid;gap:6px;font-weight:700;font-size:14px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="ph"><div class="sc" id="sc"></div><nav class="nv" id="nv" hidden></nav></div>
+<script>
+const $=s=>document.querySelector(s),rp=n=>"Rp"+n.toLocaleString("id-ID");
+const IC={search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',bell:'<path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 21h4"/>',home:'<path d="M4 11l8-7 8 7v9H4z"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',heart:'<path d="M12 20s-7.5-4.4-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10z"/>',chat:'<path d="M4 5h16v11H9l-5 4z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>',pin:'<path d="M12 21s-6.5-5.5-6.5-11a6.5 6.5 0 0 1 13 0c0 5.5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',cal:'<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M8 3v4M16 3v4"/>',sl:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>',wash:'<rect x="5" y="3" width="14" height="18" rx="3"/><circle cx="12" cy="14" r="4"/><path d="M8 7h2"/>',spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',med:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',flag:'<path d="M5 21V4h11l-2 4 2 4H5"/>',back:'<path d="M15 5l-7 7 7 7"/>',chk:'<path d="M5 12.5l4.5 4.5L19 7"/>',shield:'<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2.2 2.2L15 10"/>',bot:'<rect x="4" y="8" width="16" height="11" rx="4"/><path d="M12 4v4"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/>',star:'<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9L3.5 9.7l5.9-.8z"/>',wal:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18"/>',send:'<path d="M4 12l16-8-6 16-3-7z"/>',chev:'<path d="M9 5l7 7-7 7"/>'};
+const ic=(n,s=22,f)=>`<svg class="i" width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="true"${f?' style="fill:currentColor"':""}>${IC[n]}</svg>`;
+const L=[
+{id:1,n:"Kost Putri Sakura",v:1,a:"u",p:1200000,km:2.1,r:4.8,rv:120,f:["AC","Wi-Fi","KM dalam"],d:3,fee:100000,dep:600000,sz:"3 × 4 m",x:70,y:40},
+{id:2,n:"Kost Putra Sejahtera",v:1,a:"u",p:950000,km:1.8,r:4.6,rv:98,f:["AC","Wi-Fi","Dapur"],d:5,fee:80000,dep:475000,sz:"3 × 3,5 m",x:240,y:50},
+{id:3,n:"Kost Melati Ungu",v:1,a:"u",p:1500000,km:1.2,r:4.7,rv:41,f:["AC","KM dalam","Parkir"],d:9,fee:120000,dep:750000,sz:"3 × 4 m",x:200,y:105},
+{id:4,n:"Kost Harmoni",v:1,a:"u",p:1750000,km:0.9,r:4.9,rv:76,f:["AC","Wi-Fi","KM dalam","Parkir"],d:2,fee:150000,dep:875000,sz:"4 × 4 m",x:130,y:90},
+{id:5,n:"Kost Hemat Bahagia",v:0,a:"o",p:700000,km:3.4,r:4.1,rv:12,f:["Wi-Fi","Parkir"],d:20,fee:60000,dep:350000,sz:"3 × 3 m",x:40,y:115},
+{id:6,n:"Kost Teduh",v:0,a:"o",p:1100000,km:2.7,r:4.3,rv:5,f:["AC","Wi-Fi"],d:6,fee:90000,dep:550000,sz:"3 × 3,5 m",x:275,y:120}];
+const R={1:["Foto sesuai aslinya, pemilik cepat membalas."],2:["Harga sama seperti di aplikasi."],3:["Lingkungan tenang, dekat kampus."],4:["Kamar bersih dan sesuai foto."]};
+const FAC=["AC","Wi-Fi","KM dalam","Parkir","Dapur"];
+const S={s:"login",a:null,fav:new Set([1]),booked:[],sv:[],flag:{},fl:{q:"",max:0,rt:0,fac:new Set(),ver:false,ar:"u"},hist:new Set(),view:"list",cmp:false,tab:"own",ck:1,
+ m:{own:[],ai:[["o","Halo! Saya asisten MyKos. Tanya soal cari kos, booking, pembayaran, atau verifikasi."]]},email:"",due:"5 Des 2026",pf:{nm:"Alya",dob:"",city:"",g:""},nt:[{t:"Pembayaran kos",d:"Tagihan jatuh tempo 5 Des 2026."},{t:"Info terbaru",d:"Kos baru terverifikasi kampus tersedia."}]};
+const K=id=>L.find(k=>k.id===id);
+const logo=s=>`<svg width="${s}" height="${s}" viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="10" r="5" fill="#F2994A"/><path d="M6 26 24 11l18 15a2 2 0 0 1-1.3 3.5H38V40a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V29.5H7.3A2 2 0 0 1 6 26z" fill="#2F80ED"/><text x="24" y="38" font-size="19" font-weight="800" text-anchor="middle" fill="#fff" font-family="Nunito,system-ui">m</text></svg>`;
+function toast(t){const e=document.createElement("div");e.id="ts";e.textContent=t;$(".ph").append(e);setTimeout(()=>e.remove(),2200)}
+function sheet(h){let e=$("#sh");if(!e){e=document.createElement("div");e.id="sh";e.onclick=ev=>{if(ev.target===e)shut()};$(".ph").append(e)}e.innerHTML=`<div>${h}</div>`}
+function shut(){const e=$("#sh");if(e)e.remove()}
+function go(s,a){if(s==="detail")S.prev=S.s;S.s=s;S.a=a;shut();draw()}
+const est=x=>`<tr><td>Jalan kaki ke kampus</td><td>${Math.round(x.km*13)} mnt</td></tr><tr><td>Motor</td><td>${Math.round(x.km*3.5+2)} mnt</td></tr><tr><td>Angkot</td><td>${Math.round(x.km*5+10)} mnt</td></tr><tr><td>Tempat makan terdekat</td><td>${x.id*60+150} m</td></tr><tr><td>Fotokopi terdekat</td><td>${x.id*40+100} m</td></tr><tr><td>Mal terdekat</td><td>${(x.km+2.5).toFixed(1)} km</td></tr>`;
+const vf=x=>x.v?`<span class="vf">${ic("shield",16)}Terverifikasi Kampus</span>`:`<span class="xs mu">Belum diverifikasi kampus</span>`;
+function kc(x){const f=S.fav.has(x.id);return `<div class="kc" role="button" tabindex="0" aria-label="Buka ${x.n}" onclick="go('detail',${x.id})" onkeydown="if(event.key==='Enter')go('detail',${x.id})"><div class="im">${ic("home",44)}<button class="ib ${f?"f":""}" aria-label="Simpan ke favorit" onclick="event.stopPropagation();tfav(${x.id})">${ic("heart",20,f)}</button></div><div class="cb"><b>${x.n}</b>${vf(x)}<div class="sm mu row" style="gap:6px">${ic("star",15,1)}${x.r} (${x.rv}) · ${x.km} km dari UBAYA</div><div class="pc">${rp(x.p)}<small> /bulan</small></div><div class="xs mu">${x.f.join(", ")}</div></div></div>`}
+function lst(){const f=S.fl,q=f.q;return L.filter(x=>(!q||x.n.toLowerCase().includes(q)||x.f.some(a=>a.toLowerCase().includes(q))||(/ubaya/.test(q)&&x.a=="u"))&&(!f.max||x.p<=f.max)&&x.r>=f.rt&&(!f.ver||x.v)&&(f.ar=="all"||x.a==f.ar)&&[...f.fac].every(a=>x.f.includes(a)))}
+const sbar=(id,v,fn)=>`<div class="sb">${ic("search")}<input id="${id}" value="${v}" placeholder="Cari kos, lokasi, atau nama kampus…" aria-label="Cari kos" onkeydown="if(event.key==='Enter'){${fn}}"><button class="ib" style="box-shadow:none;background:var(--ps);color:var(--pr)" aria-label="Filter" onclick="fsheet()">${ic("sl")}</button></div>`;
+const V={
+login(){return `<div class="g" style="gap:20px;padding-top:56px">${logo(60)}<h1>mykos</h1><h2 style="font-weight:700">Kos nyaman, terpercaya.</h2><p class="mu" style="margin:0">Masuk dengan email UBAYA atau unggah KTM agar hanya civitas UBAYA yang bisa mengulas dan bertransaksi.</p><input id="em" type="email" placeholder="nama@std.ubaya.ac.id" aria-label="Email UBAYA"><div class="al" id="er" hidden>Gunakan email dengan domain ubaya.ac.id.</div><button class="b" onclick="login(1)">Masuk dengan email UBAYA</button><button class="b s" onclick="login(0)">Unggah KTM (simulasi)</button><p class="xs mu">Prototype demo. Data fiktif, tidak ada yang dikirim.</p></div>`},
+home(){const q=[["pin","Peta"],["heart","Favorit"],["cal","Jadwal survei"],["sl","Filter"],["wash","Laundry"],["spark","Cleaning"],["med","Kesehatan"],["flag","Komplain"]];
+const rec=L.filter(x=>x.v).sort((a,b)=>[...S.hist].filter(h=>b.f.includes(h)).length-[...S.hist].filter(h=>a.f.includes(h)).length||b.r-a.r),k=K(4);
+return `<div class="row sp"><div class="row" style="gap:10px">${logo(42)}<div><b style="font-size:24px;line-height:1">mykos</b><div class="xs mu">Kos nyaman, terpercaya.</div></div></div><div class="row" style="gap:10px"><button class="ib" aria-label="Notifikasi" onclick="bell()">${ic("bell")}</button><button class="ib" aria-label="Profil" onclick="S.prev=null;go('profile')">${ic("user")}</button></div></div>
+${sbar("hq",S.fl.q,"S.fl.q=this.value.toLowerCase();S.view='list';go('explore')")}
+<div class="ban"><b style="font-size:19px">Cari kos jadi lebih mudah</b><span class="sm" style="opacity:.9">Kos terverifikasi kampus, lengkap dengan fitur terbaik untuk kamu.</span></div>
+<div class="q4">${q.map((x,i)=>`<button onclick="qk(${i})"><span>${ic(x[0])}</span>${x[1]}</button>`).join("")}</div>
+<div class="g"><h3>Tempat terdekat dari kos</h3><div class="card" style="cursor:pointer" onclick="S.view='map';go('explore')"><div class="sm mu">Kost Harmoni (contoh), terhubung Google Maps (simulasi)</div><table><tr><td>Kampus UBAYA</td><td>${k.km} km</td></tr><tr><td>Tempat makan</td><td>${k.id*60+150} m</td></tr><tr><td>Fotokopi</td><td>${k.id*40+100} m</td></tr></table></div></div>
+<div class="g"><div class="row sp"><h3>Rekomendasi kos</h3><button class="sm" style="color:var(--pr);font-weight:700" onclick="go('explore')">Lihat semua</button></div>${S.hist.size?`<div class="sm mu" style="margin-top:-8px">Berdasarkan pencarianmu: ${[...S.hist].join(", ")}</div>`:""}<div class="hs">${rec.map(kc).join("")}</div></div>
+<div class="g"><button class="card row" style="text-align:left" onclick="S.tab='ai';go('chat')"><span style="color:var(--pr)">${ic("bot",30)}</span><span><b>Butuh bantuan?</b><br><span class="sm mu">Tanya MyKos AI</span></span></button><button class="card row" style="text-align:left" onclick="go('profile')"><span style="color:var(--px)">${ic("wal",30)}</span><span><b>Pembayaran kos</b><br><span class="sm mu">Jatuh tempo ${S.due}</span></span></button></div>`},
+explore(){const a=lst(),f=S.fl;
+return `<h2>Jelajahi kos</h2>${sbar("eq",f.q,"S.fl.q=this.value.toLowerCase();draw()")}
+<div class="row wr"><button class="chip" aria-pressed="${f.ar=="u"}" onclick="S.fl.ar='u';draw()">Sekitar UBAYA</button><button class="chip" aria-pressed="${f.ar=="o"}" onclick="S.fl.ar='o';draw()">Area lain</button><button class="chip" aria-pressed="${f.ar=="all"}" onclick="S.fl.ar='all';draw()">Semua</button></div>
+<div class="sg"><button class="${S.view=="list"?"on":""}" onclick="S.view='list';draw()">Daftar</button><button class="${S.view=="map"?"on":""}" onclick="S.view='map';draw()">Peta</button></div>
+${S.view=="map"?`<div class="card"><div class="sm mu">Peta simulasi, ketuk pin untuk membuka kos</div><svg viewBox="0 0 320 150" role="img" aria-label="Peta lokasi kos"><rect width="320" height="150" rx="14" fill="var(--ps)"/><path d="M0 75H320M160 0V150M0 30L320 120" stroke="var(--card)" stroke-width="8" fill="none"/><circle cx="160" cy="72" r="13" fill="#F59E0B"/><text x="160" y="76" font-size="11" text-anchor="middle" fill="#fff" font-weight="800">U</text>${a.map(x=>`<g onclick="go('detail',${x.id})" style="cursor:pointer" tabindex="0" onkeydown="if(event.key==='Enter')go('detail',${x.id})"><circle cx="${x.x}" cy="${x.y}" r="12" fill="#1F5EDC"/><text x="${x.x}" y="${x.y+4}" font-size="11" text-anchor="middle" fill="#fff" font-weight="800">${x.id}</text></g>`).join("")}</svg></div>`:""}
+<div class="g" style="gap:20px">${a.length?a.map(kc).join(""):`<div class="card mu">Tidak ada kos yang cocok. Coba area lain atau longgarkan filter.</div>`}</div>`},
+detail(){const x=K(S.a),f=S.fav.has(x.id),fg=S.flag[x.id]||0,rv=R[x.id]||[];
+return `<div class="row sp"><button class="ib" aria-label="Kembali" onclick="go(S.prev||'home')">${ic("back")}</button><button class="ib ${f?"f":""}" style="${f?"color:var(--pr)":""}" aria-label="Simpan" onclick="tfav(${x.id})">${ic("heart",22,f)}</button></div>
+<div class="g" style="gap:8px"><h1>${x.n}</h1>${vf(x)}<div class="sm mu row" style="gap:6px">${ic("star",15,1)}${x.r} (${x.rv} review) · ${x.km} km dari UBAYA</div></div>
+${x.d>14?`<div class="al">Info kamar belum diperbarui ${x.d} hari. Tanyakan ketersediaan lewat chat.</div>`:`<div class="ok">Kamar tersedia. Diperbarui ${x.d} hari lalu.</div>`}
+${fg?`<div class="al">Red flag: ${fg} laporan dari penghuni, menunggu tinjauan tim.</div>`:""}
+<div class="g"><h3>Virtual room 360°</h3><div class="pano" role="img" aria-label="Placeholder tur 360 derajat, geser ke samping"><div><span>Ruang depan</span><span>Kamar</span><span>Kamar mandi</span></div></div><div class="sm mu">Luas kamar ${x.sz}. Geser ke samping untuk melihat sekeliling (placeholder).</div></div>
+<div class="card"><h3>Harga transparan</h3><table><tr><td>Sewa bulan pertama</td><td>${rp(x.p)}</td></tr><tr><td>Listrik dan air</td><td>${rp(x.fee)}</td></tr><tr><td>Deposit (dikembalikan)</td><td>${rp(x.dep)}</td></tr><tr><td><b>Total di awal</b></td><td>${rp(x.p+x.fee+x.dep)}</td></tr></table></div>
+<div class="card"><h3>Fasilitas</h3><div class="row wr">${x.f.map(a=>`<span class="chip">${a}</span>`).join("")}</div></div>
+<div class="card"><h3>Jarak dan estimasi</h3><table>${est(x)}</table></div>
+<div class="card"><h3>Review penghuni</h3>${rv.map(r=>`<div><span class="xs mu">Penghuni terverifikasi UBAYA</span><br>${r}</div>`).join("")||`<span class="mu">Belum ada review.</span>`}<button class="b s" onclick="wr(${x.id})">Tulis review</button></div>
+<div class="card"><h3>Jadwal survei</h3><div class="sm mu">Pilih waktu yang dibuka pemilik.</div><div class="row wr">${["Sen 10.00","Rab 15.00","Sab 09.00"].map(t=>`<button class="chip" aria-pressed="${S.sv.some(v=>v[0]==x.id&&v[1]==t)}" onclick="svp(${x.id},'${t}')">${t}</button>`).join("")}</div></div>
+<button class="b o" onclick="S.ck=${x.id};go('svc','komplain')">${ic("flag",18)}Laporkan atau komplain</button>
+<div class="bar"><div style="flex:1"><div class="pc">${rp(x.p)}</div><div class="xs mu">per bulan</div></div><button class="ib" aria-label="Chat pemilik" style="color:var(--pr)" onclick="S.ck=${x.id};S.tab='own';go('chat')">${ic("chat")}</button><button class="b" style="width:auto;min-width:130px" onclick="book(${x.id})">Sewa aman</button></div>`},
+saved(){const a=L.filter(x=>S.fav.has(x.id));
+return `<div class="row sp"><h2>Kos favorit</h2>${a.length>1?`<button class="chip" onclick="S.cmp=!S.cmp;draw()">${S.cmp?"Daftar":"Bandingkan"}</button>`:""}</div>
+${!a.length?`<div class="card mu">Belum ada favorit. Ketuk ikon hati di halaman kos untuk menyimpan dan membandingkan nanti.</div>`:S.cmp?`<div class="card" style="overflow-x:auto"><table style="min-width:${a.length*110+90}px"><tr><td></td>${a.slice(0,3).map(x=>`<td><b>${x.n.replace("Kost ","")}</b></td>`).join("")}</tr><tr><td>Harga</td>${a.slice(0,3).map(x=>`<td>${rp(x.p)}</td>`).join("")}</tr><tr><td>Jarak</td>${a.slice(0,3).map(x=>`<td>${x.km} km</td>`).join("")}</tr><tr><td>Rating</td>${a.slice(0,3).map(x=>`<td>${x.r}</td>`).join("")}</tr><tr><td>Verifikasi</td>${a.slice(0,3).map(x=>`<td>${x.v?"Ya":"Belum"}</td>`).join("")}</tr><tr><td>Fasilitas</td>${a.slice(0,3).map(x=>`<td class="xs">${x.f.join(", ")}</td>`).join("")}</tr></table></div><div class="xs mu">Membandingkan sampai 3 kos.</div>`:`<div class="g" style="gap:20px">${a.map(kc).join("")}</div>`}`},
+chat(){const t=S.tab,k=K(S.ck),ms=S.m[t];
+return `<h2>Chat</h2><div class="sg"><button class="${t=="own"?"on":""}" onclick="S.tab='own';draw()">Pemilik kos</button><button class="${t=="ai"?"on":""}" onclick="S.tab='ai';draw()">MyKos AI</button></div>
+${t=="own"?`<div class="row sp"><div class="sm mu">${k.n}</div><button class="chip" onclick="svs(${k.id})">Atur jadwal survei</button></div><div class="m x">Ngobrol dan bayar hanya di MyKos. MyKos tidak pernah meminta DP lewat WA atau Google Form.</div>`:""}
+<div class="msgs" id="ms">${ms.map(m=>m[0]=="b"?`<button class="b s q" style="justify-self:start" onclick="adm()">Hubungi admin</button>`:`<div class="m ${m[0]}">${esc(m[1])}</div>`).join("")}</div>
+<div class="row"><input id="ci" placeholder="${t=="own"?"Tulis pesan…":"Tanya MyKos AI…"}" aria-label="Pesan" onkeydown="if(event.key==='Enter')send()"><button class="ib" style="background:var(--pr);color:var(--on);flex:none" aria-label="Kirim" onclick="send()">${ic("send",20)}</button></div>`},
+profile(){const p=S.pf,R=[["Edit profil","ep"],["Kos yang ditempati","kos"],["Pengingat pembayaran","pay"],["Riwayat pemesanan","rw"],["Jadwal survei","sv"]];
+return `<h2>Profil</h2><div class="card"><div class="row"><span class="ib" style="background:var(--ps);color:var(--pr);box-shadow:none">${ic("user")}</span><div><b>${esc(p.nm)}</b><div class="sm mu">${S.email||"Akun UBAYA"}</div></div></div><div class="ok">Terverifikasi mahasiswa UBAYA</div></div>
+<div class="card" style="padding:4px 20px">${R.map((r,i)=>`<button class="row sp" style="width:100%;padding:18px 0;text-align:left;${i<R.length-1?"border-bottom:1px solid var(--bd)":""}" onclick="pr('${r[1]}')"><b>${r[0]}</b><span class="mu">${ic("chev",18)}</span></button>`).join("")}</div>
+<button class="b o" onclick="S.s='login';draw()">Keluar</button>`},
+ep(){const p=S.pf;return `<button class="ib" aria-label="Kembali" onclick="go('profile')">${ic("back")}</button><div class="g" style="gap:8px"><h2>Edit profil</h2><p class="mu" style="margin:0">Lengkapi data diri agar MyKos bisa menyesuaikan rekomendasi kos untukmu.</p></div>
+<label class="lb">Nama<input id="pn" value="${esc(p.nm)}"></label><label class="lb">Tanggal lahir<input id="pd" type="date" value="${p.dob}"></label><label class="lb">Kota tempat tinggal<input id="pc" value="${esc(p.city)}" placeholder="Contoh: Surabaya"></label><label class="lb">Gender<select id="pg"><option value="">Pilih</option><option ${p.g=="Perempuan"?"selected":""}>Perempuan</option><option ${p.g=="Laki-laki"?"selected":""}>Laki-laki</option></select></label>
+<button class="b" onclick="psave()">Simpan</button>`},
+svc(){const a=S.a,bk=`<button class="ib" aria-label="Kembali" onclick="go('home')">${ic("back")}</button>`;
+if(a=="sehat")return `${bk}<h2>Layanan kesehatan terdekat</h2>${[["Klinik Sehat Contoh","0,6 km"],["Apotek Contoh","0,4 km"],["RS Contoh","3 km"]].map(r=>`<div class="card row sp"><div><b>${r[0]}</b><div class="sm mu">${r[1]} dari kampus</div></div><button class="b q" onclick="toast('Menghubungi… (simulasi)')">Hubungi</button></div>`).join("")}<div class="xs mu">Data contoh untuk demo.</div>`;
+if(a=="komplain")return `${bk}<h2>Komplain atau lapor</h2><label class="lb">Kos<select id="kk">${L.map(x=>`<option value="${x.id}" ${x.id==S.ck?"selected":""}>${x.n}</option>`).join("")}</select></label><label class="lb">Kategori<select id="kt"><option>Fasilitas rusak</option><option>Pelayanan pemilik</option><option>Informasi tidak sesuai</option><option>Dugaan penipuan (red flag)</option></select></label><label class="lb">Detail<textarea id="kd" rows="4" placeholder="Ceritakan masalahnya…"></textarea></label><button class="b" onclick="kom()">Kirim laporan</button>`;
+const lb=a=="laundry";return `${bk}<h2>${lb?"Pesan laundry":"Pesan cleaning"}</h2><div class="row wr">${(lb?["Kiloan","Satuan","Express"]:["Kamar","Kamar mandi","Menyeluruh"]).map((t,i)=>`<button class="chip" aria-pressed="${i==0}" onclick="this.parentNode.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));this.setAttribute('aria-pressed','true')">${t}</button>`).join("")}</div><label class="lb">Jadwal<select><option>Besok pagi</option><option>Besok sore</option><option>Lusa</option></select></label><button class="b" onclick="toast('Pesanan dibuat (simulasi)');go('home')">Pesan sekarang</button><div class="xs mu">Penyedia jasa contoh. Pembayaran lewat MyKos.</div>`}
+};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function tfav(id){S.fav.has(id)?S.fav.delete(id):S.fav.add(id);draw()}
+function fsheet(){const f=S.fl;sheet(`<h3>Filter pencarian</h3><label class="lb">Harga maksimum<select id="fm"><option value="0">Semua harga</option><option value="1000000" ${f.max==1e6?"selected":""}>Sampai Rp1 juta</option><option value="1500000" ${f.max==15e5?"selected":""}>Sampai Rp1,5 juta</option><option value="2000000" ${f.max==2e6?"selected":""}>Sampai Rp2 juta</option></select></label><label class="lb">Rating minimum<select id="fr"><option value="0">Semua rating</option><option value="4.5" ${f.rt==4.5?"selected":""}>4,5 ke atas</option><option value="4.7" ${f.rt==4.7?"selected":""}>4,7 ke atas</option></select></label><div class="lb">Fasilitas<div class="row wr" id="ff">${FAC.map(x=>`<button class="chip" aria-pressed="${f.fac.has(x)}" onclick="this.setAttribute('aria-pressed',this.getAttribute('aria-pressed')!=='true')">${x}</button>`).join("")}</div></div><label class="row" style="font-weight:700"><input type="checkbox" id="fv" style="width:22px;height:22px" ${f.ver?"checked":""}>Hanya yang terverifikasi kampus</label><button class="b" onclick="fapply()">Terapkan</button><button class="b o" onclick="S.fl.max=0;S.fl.rt=0;S.fl.fac.clear();S.fl.ver=false;shut();S.s=='explore'?draw():go('explore')">Atur ulang</button>`)}
+function fapply(){const f=S.fl;f.max=+$("#fm").value;f.rt=+$("#fr").value;f.ver=$("#fv").checked;f.fac=new Set([...document.querySelectorAll("#ff .chip")].filter(c=>c.getAttribute("aria-pressed")=="true").map(c=>c.textContent));f.fac.forEach(a=>S.hist.add(a));shut();S.s=="explore"?draw():go("explore")}
+function qk(i){if(i==0){S.view="map";go("explore")}else if(i==1)go("saved");else if(i==2)sheet(`<h3>Jadwal survei</h3>${S.sv.length?S.sv.map(v=>`<div>${K(v[0]).n}, ${v[1]}</div>`).join(""):`<span class="mu">Belum ada jadwal. Buka detail kos atau chat pemilik untuk memilih waktu survei.</span>`}<button class="b s" onclick="shut()">Tutup</button>`);else if(i==3)fsheet();else go("svc",["","","","","laundry","cleaning","sehat","komplain"][i])}
+function bell(){sheet(`<h3>Notifikasi</h3>${S.nt.map(n=>`<div class="card"><b>${n.t}</b><span class="sm mu">${n.d}</span></div>`).join("")}<button class="b s" onclick="shut()">Tutup</button>`)}
+function login(m){const v=($("#em")||{}).value||"";if(m){if(!/@.+ubaya\.ac\.id$/i.test(v.trim())){$("#er").hidden=false;return}S.email=v.trim()}S.s="home";draw()}
+function svp(id,t){const i=S.sv.findIndex(v=>v[0]==id&&v[1]==t);i<0?S.sv.push([id,t]):S.sv.splice(i,1);shut();draw();toast(i<0?"Jadwal survei disimpan":"Jadwal dibatalkan")}
+function svs(id){sheet(`<h3>Jadwal survei ${K(id).n}</h3><div class="sm mu">Waktu yang dibuka pemilik.</div><div class="row wr">${["Sen 10.00","Rab 15.00","Sab 09.00"].map(t=>`<button class="chip" onclick="svp(${id},'${t}')">${t}</button>`).join("")}</div>`)}
+function psave(){S.pf={nm:$("#pn").value.trim()||"Alya",dob:$("#pd").value,city:$("#pc").value.trim(),g:$("#pg").value};toast("Profil disimpan");go("profile")}
+function pr(k){const bk=S.booked.map(K);if(k=="ep"){go("ep");return}
+ const h={kos:`<h3>Kos yang ditempati</h3><div class="card">${bk.length?bk.map(x=>x.n).join(", "):"Kost Harmoni (contoh)"}</div>`,pay:`<h3>Pengingat pembayaran</h3><div class="card">Jatuh tempo berikutnya: <b>${S.due}</b></div><button class="b" onclick="toast('Pengingat aktif: H-3 dan H-1');shut()">Aktifkan pengingat</button>`,rw:`<h3>Riwayat pemesanan</h3><div class="card">${bk.length?bk.map(x=>`<div>${x.n}: ${rp(x.p+x.fee+x.dep)}</div>`).join(""):"<span class='mu'>Belum ada pemesanan.</span>"}</div>`,sv:`<h3>Jadwal survei</h3><div class="card">${S.sv.length?S.sv.map(v=>`<div>${K(v[0]).n}, ${v[1]}</div>`).join(""):"<span class='mu'>Belum ada jadwal.</span>"}</div>`}[k];
+ sheet(h+`<button class="b s" onclick="shut()">Tutup</button>`)}
+function wr(id){if(!S.booked.includes(id)){sheet(`<h3>Tulis review</h3><div class="al">Review hanya dari penghuni yang bertransaksi lewat MyKos. Selesaikan sewa aman dulu agar bisa mengulas.</div><button class="b s" onclick="shut()">Mengerti</button>`);return}
+ sheet(`<h3>Tulis review</h3><textarea id="rt" rows="3" placeholder="Kebersihan, keamanan, fasilitas, pelayanan…" aria-label="Review"></textarea><button class="b" onclick="R[${id}]=(R[${id}]||[]).concat([$('#rt').value||'Tanpa komentar.']);shut();draw();toast('Review terkirim')">Kirim</button>`)}
+function kom(){const id=+$("#kk").value,t=$("#kt").value;if(t.startsWith("Dugaan"))S.flag[id]=(S.flag[id]||0)+1;toast(t.startsWith("Dugaan")?"Red flag dicatat dan ditinjau tim":"Laporan terkirim, target respons 24 jam");go("detail",id)}
+function send(){const i=$("#ci"),t=i.value.trim();if(!t)return;const k=S.tab;S.m[k].push(["u",t]);i.value="";
+ if(k=="own"){if(/(\d[\s.-]?){8,}|rekening|transfer|\bwa\b|whatsapp|https?:|www\.|\.com/i.test(t))S.m.own.push(["x","Peringatan: jangan bagikan nomor rekening, nomor HP, atau link luar, dan jangan transfer di luar MyKos."]);else{S.m.own.push(["o","Halo, kamar masih tersedia. Silakan ajukan sewa lewat aplikasi."]);const n=K(S.ck).n;if(!S.nt.some(x=>x.t=="Balasan "+n))S.nt.unshift({t:"Balasan "+n,d:"Kamar yang kamu tanyakan masih tersedia."})}}
+ else{const p=t.toLowerCase();let r;const c=L.slice().sort((a,b)=>a.p-b.p)[0];
+ if(/booking|sewa|pesan/.test(p))r="Buka detail kos lalu ketuk Sewa aman. Dana ditahan MyKos sampai kamu konfirmasi di lokasi.";
+ else if(/bayar|dp|escrow|transfer|e-?wallet/.test(p))r="Bayar hanya lewat aplikasi (e-wallet atau virtual account). MyKos tidak pernah meminta DP lewat WA atau Google Form.";
+ else if(/verifikasi|aman|tipu|scam/.test(p))r="Label Terverifikasi Kampus berarti kos sudah dicek tim. Cek juga review penghuni dan tanggal info kamar diperbarui.";
+ else if(/murah|harga|budget/.test(p))r=`Yang termurah saat ini ${c.n} (${rp(c.p)}/bulan). Buka Jelajahi untuk filter harga.`;
+ else r="Saya belum paham pertanyaannya. Mau dihubungkan ke admin?";S.m.ai.push(["o",r]);if(r.startsWith("Saya belum"))S.m.ai.push(["b"])}
+ draw();const m=$("#ms");if(m&&m.lastElementChild)m.lastElementChild.scrollIntoView()}
+function adm(){S.m.ai.push(["o","Permintaan diteruskan ke admin (simulasi). Admin akan membalas di chat ini."]);draw()}
+const ST=[["Bayar di aplikasi","Pilih e-wallet atau virtual account. Dana ditahan MyKos, belum sampai ke pemilik."],["Pindah dan konfirmasi di lokasi","Foto kamar di lokasi, lalu tekan konfirmasi. Pemilik tidak bisa menekannya."],["Dana ditahan 48 jam","Waktu untuk melapor jika kondisi tidak sesuai."],["Dana cair ke pemilik","Ke rekening yang namanya sama dengan pemilik terverifikasi."]];
+function book(id){const x=K(id);let s=0,is=0,pay="E-wallet";const d=()=>{sheet(`<h3>Sewa aman: ${x.n}</h3><div class="sm mu">Total di awal ${rp(x.p+x.fee+x.dep)}</div>${s==0?`<div class="row wr">${["E-wallet","Virtual account bank"].map(m=>`<button class="chip" aria-pressed="${m==pay}" data-m="${m}">${m}</button>`).join("")}</div>`:""}<ol class="st">${ST.map((t,i)=>`<li class="${i<s?"d":i==s?"c":""}"><b>${t[0]}</b><div class="sm mu">${t[1]}</div></li>`).join("")}</ol>${is?`<div class="al">Dana tetap ditahan. Tim MyKos memediasi, target respons 24 jam.</div>`:s>=4?`<div class="ok">Selesai. Kamu sekarang bisa menulis review.</div>`:`<button class="b" id="nx">${s==0?"Bayar "+rp(x.p+x.fee+x.dep):"Simulasikan langkah berikutnya"}</button>${s==1||s==2?`<button class="b o" id="is">Ada masalah</button>`:""}`}<button class="b s" onclick="shut();draw()">Tutup</button>`);
+ document.querySelectorAll("#sh [data-m]").forEach(b=>b.onclick=()=>{pay=b.dataset.m;d()});const n=$("#nx"),i=$("#is");if(n)n.onclick=()=>{s++;if(s==1&&!S.booked.includes(id))S.booked.push(id);d()};if(i)i.onclick=()=>{is=1;d()}};d()}
+function th(){const r=document.documentElement;r.dataset.theme=getComputedStyle(r).colorScheme=="dark"?"light":"dark"}
+function draw(){const o=$("#sc"),n=$("#nv"),t=S.s=="detail"||S.s=="svc"?(S.prev||"home"):S.s=="ep"?"profile":S.s;o.innerHTML=V[S.s]();n.hidden=S.s=="login";
+ n.innerHTML=[["home","home","Home"],["explore","map","Explore"],["saved","heart","Saved"],["chat","chat","Chat"],["profile","user","Profile"]].map(x=>`<button class="${x[0]==t?"on":""}" onclick="S.prev=null;go('${x[0]}')">${ic(x[1],24)}${x[2]}</button>`).join("");
+ const q=S.fl.q;if(q&&FAC.some(a=>a.toLowerCase()==q))FAC.forEach(a=>{if(a.toLowerCase()==q)S.hist.add(a)});const kx=S.s+S.a;if(S.lk!=kx){o.scrollTop=0;S.lk=kx}}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyKos – Kos nyaman, terpercaya</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap">
+<style>
+:root{--bg:#FFF8EE;--card:#fff;--tx:#0F1F4D;--mu:#59628a;--pr:#1F4FD8;--on:#fff;--bd:#e7dfd0;--ok:#0a7d4f;--okb:#dcf3e8;--wn:#a24a05;--wnb:#fdebc8;--lb:#e8eefc;--sh:0 1px 2px rgba(15,31,77,.08);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1026;--card:#141b3a;--tx:#eef1ff;--mu:#a3acd4;--pr:#7ea0ff;--on:#0b1026;--bd:#2a3366;--ok:#6fe0a8;--okb:#12382b;--wn:#ffc36b;--wnb:#3d2d0c;--lb:#1d2754;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1026;--card:#141b3a;--tx:#eef1ff;--mu:#a3acd4;--pr:#7ea0ff;--on:#0b1026;--bd:#2a3366;--ok:#6fe0a8;--okb:#12382b;--wn:#ffc36b;--wnb:#3d2d0c;--lb:#1d2754;color-scheme:dark}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:500 16px/1.55 Nunito,system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{line-height:1.15;margin:0;font-weight:800}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--pr);outline-offset:2px}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--bd)}
+header .w{display:flex;align-items:center;gap:16px;min-height:64px}
+.lg{display:flex;align-items:center;gap:8px;font-size:26px;font-weight:800;text-decoration:none;letter-spacing:-.02em}
+nav{margin-left:auto;display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;font-weight:700;color:var(--mu)}
+nav a:hover{color:var(--tx)}
+.b{border:0;border-radius:10px;padding:10px 16px;font-weight:800;background:var(--pr);color:var(--on)}
+.b.s{background:var(--lb);color:var(--tx)}
+.b.g{background:none;border:1px solid var(--bd);color:var(--tx)}
+.b:disabled{opacity:.5;cursor:default}
+.hero{padding:44px 0 28px}
+.hero h1{font-size:clamp(32px,6vw,56px);max-width:15ch;letter-spacing:-.03em}
+.hero p{max-width:56ch;color:var(--mu);font-size:18px;margin:14px 0 22px}
+.tiers{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tier{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:999px;padding:6px 14px 6px 8px;font-weight:700;font-size:14px}
+.dots{display:inline-flex;gap:3px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--bd)}.dots i.on{background:var(--pr)}
+.fb{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;display:grid;gap:12px;box-shadow:var(--sh)}
+.fr{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;min-width:0}
+#q{flex:1 1 240px}
+.chip{border:1px solid var(--bd);background:var(--bg);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;color:var(--tx)}
+.chip[aria-pressed=true]{background:var(--pr);color:var(--on);border-color:var(--pr)}
+.lbl{display:flex;gap:6px;align-items:center;font-weight:700;font-size:14px}
+.sec{padding:36px 0}
+.sec h2{font-size:clamp(24px,4vw,34px);margin-bottom:8px;letter-spacing:-.02em}
+.sub{color:var(--mu);max-width:62ch;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:var(--sh);transition:transform .15s}
+.card:hover{transform:translateY(-2px)}
+.im{height:132px;display:grid;place-items:center;font-size:48px;position:relative}
+.bd{position:absolute;left:10px;top:10px;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;background:var(--card);color:var(--tx)}
+.l3{background:var(--okb);color:var(--ok)}.l2{background:var(--lb);color:var(--pr)}
+.cb{padding:12px 14px 14px;display:grid;gap:6px}
+.mu{color:var(--mu)}.sm{font-size:13px}
+.pr{font-size:20px;font-weight:800}.pr small{font-size:13px;color:var(--mu);font-weight:700}
+.ch{display:flex;gap:6px;flex-wrap:wrap}.ch i{font-style:normal;font-size:12px;font-weight:700;background:var(--lb);border-radius:6px;padding:2px 8px}
+.w2{color:var(--wn);background:var(--wnb);border-radius:6px;padding:1px 6px;font-weight:700}
+.empty{grid-column:1/-1;background:var(--card);border:1px dashed var(--bd);border-radius:16px;padding:28px;text-align:center;color:var(--mu)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.pnl{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px}
+.pnl h3{font-size:19px;margin-bottom:6px}
+.pnl ul{margin:8px 0 0;padding-left:18px;color:var(--mu)}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:16px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bd);vertical-align:top;font-size:15px}
+th{font-weight:800;background:var(--lb)}tr:last-child td{border:0}
+dialog{border:0;border-radius:20px;padding:0;width:min(680px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--bg);color:var(--tx);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(8,12,32,.55)}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--bd);position:sticky;top:0;background:var(--bg);z-index:2}
+.dh h3{font-size:22px}
+.db{padding:16px 20px 22px;display:grid;gap:16px}
+.pano{overflow-x:auto;border-radius:14px;border:1px solid var(--bd)}
+.pano div{width:300%;height:150px;display:grid;grid-template-columns:repeat(3,1fr);align-items:center;text-align:center;font-weight:800;font-size:15px}
+.pano div span{height:100%;display:grid;place-items:center;padding:0 10px}
+.cht{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;display:grid;gap:8px}
+.msgs{display:grid;gap:6px;max-height:170px;overflow:auto}
+.m{padding:8px 12px;border-radius:12px;max-width:85%;font-size:15px}
+.m.u{background:var(--pr);color:var(--on);justify-self:end}.m.o{background:var(--lb)}
+.m.x{background:var(--wnb);color:var(--wn);max-width:100%;font-weight:700}
+.ft{padding:30px 0 40px;color:var(--mu);font-size:14px;border-top:1px solid var(--bd)}
+ol.st{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ol.st li{border:1px solid var(--bd);border-radius:12px;padding:10px 14px;background:var(--card);opacity:.55}
+ol.st li.d,ol.st li.c{opacity:1}ol.st li.c{border-color:var(--pr);box-shadow:0 0 0 2px var(--pr) inset}
+ol.st li.d b::before{content:"✓ ";color:var(--ok)}
+.al{border-radius:12px;padding:10px 14px;background:var(--wnb);color:var(--wn);font-weight:700}
+.ok{border-radius:12px;padding:10px 14px;background:var(--okb);color:var(--ok);font-weight:700}
+@media(max-width:640px){nav a{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<a class="lg" href="#top" aria-label="MyKos beranda"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 36 15v19a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V15z" fill="#1F4FD8"/><text x="20" y="32" font-size="23" font-weight="800" text-anchor="middle" fill="#fff" font-family="Nunito,system-ui">m</text><circle cx="20" cy="11" r="3.2" fill="#F59E0B"/></svg>mykos</a>
+<nav><a href="#cari">Cari kos</a><a href="#aman">Sistem aman</a><a href="#modus">Modus penipuan</a>
+<button class="b s" id="lgb" onclick="openLogin()">Masuk dengan email UBAYA</button>
+<button class="b g" id="th" aria-label="Ganti tema">◐</button></nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="w">
+<h1>Kos nyaman, terpercaya.</h1>
+<p>Cari kos di sekitar UBAYA yang sudah disurvei tim, dengan harga total yang jelas dan pembayaran yang ditahan sampai kamu benar-benar pindah.</p>
+<div class="tiers" aria-label="Tiga tingkat verifikasi">
+<span class="tier"><span class="dots"><i class="on"></i><i></i><i></i></span>Terdaftar</span>
+<span class="tier"><span class="dots"><i class="on"></i><i class="on"></i><i></i></span>Terverifikasi Lapangan</span>
+<span class="tier"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span>Terbukti Penghuni</span>
+</div>
+<div class="fb" id="cari">
+<div class="fr"><input id="q" type="search" placeholder="Cari nama kos…" aria-label="Cari nama kos">
+<select id="mx" aria-label="Harga maksimum"><option value="0">Semua harga</option><option value="1000000">Sampai Rp1 juta</option><option value="1500000">Sampai Rp1,5 juta</option><option value="2000000">Sampai Rp2 juta</option></select>
+<select id="so" aria-label="Urutkan"><option value="km">Terdekat ke kampus</option><option value="p">Termurah</option><option value="r">Rating tertinggi</option></select></div>
+<div class="fr" id="fc"></div>
+<label class="lbl"><input type="checkbox" id="vo"> Hanya yang sudah diverifikasi lapangan</label>
+</div>
+</div></section>
+
+<section class="sec" style="padding-top:8px"><div class="w">
+<div class="grid" id="res" aria-live="polite"></div>
+<p class="sm mu" style="margin-top:14px">Data kos pada halaman ini adalah contoh untuk demo, bukan listing asli.</p>
+</div></section>
+
+<section class="sec" id="aman"><div class="w">
+<h2>Tiga lapis perlindungan</h2>
+<p class="sub">Semua chat dan pembayaran berjalan di dalam MyKos. Itu aturan dasarnya.</p>
+<div class="three">
+<div class="pnl"><h3>Siapa yang bertransaksi</h3><ul><li>Penyewa masuk dengan email UBAYA atau KTM.</li><li>Pemilik kos memverifikasi KTP, selfie, dan bukti kepemilikan.</li><li>Dana hanya cair ke rekening yang namanya sama dengan pemilik.</li></ul></div>
+<div class="pnl"><h3>Apa yang disewakan</h3><ul><li>Tim survei datang ke lokasi dengan checklist terbuka.</li><li>Foto dan 360° diambil lewat aplikasi surveyor, lengkap dengan lokasi dan waktu.</li><li>Setiap kos menampilkan tanggal verifikasi terakhir.</li></ul></div>
+<div class="pnl"><h3>Bagaimana uang bergerak</h3><ul><li>Dana ditahan setelah kamu bayar di aplikasi.</li><li>Kamu konfirmasi di lokasi, pemilik tidak bisa menekannya.</li><li>Ada jeda 48 jam dan tombol “Ada masalah” sebelum dana cair.</li></ul></div>
+</div></div></section>
+
+<section class="sec" id="modus"><div class="w">
+<h2>Modus penipuan dan cara MyKos menutupnya</h2>
+<p class="sub">Penipuan kos biasanya terjadi di celah antara platform dan dunia luar.</p>
+<div class="tw"><table>
+<tr><th>Modus</th><th>Perlindungan di MyKos</th></tr>
+<tr><td>Diajak bayar lewat WA, Google Form, atau rekening pribadi</td><td>Chat dan bayar hanya di aplikasi. Nomor pemilik disamarkan dan chat memberi peringatan bila ada nomor rekening atau link.</td></tr>
+<tr><td>Pemilik palsu atau rekening bukan milik pemilik</td><td>Verifikasi pemilik dan pencocokan nama rekening sebelum dana cair.</td></tr>
+<tr><td>Kos fiktif dan foto curian</td><td>Survei lapangan, foto bergeotag, dan tanggal verifikasi terakhir. Info kamar yang tidak diperbarui lebih dari 14 hari ditandai.</td></tr>
+<tr><td>Dipaksa menekan tombol Check In sebelum pindah</td><td>Konfirmasi dilakukan di lokasi dengan foto kamar. Dana tetap ditahan 48 jam.</td></tr>
+<tr><td>Bukti transfer palsu terhadap pemilik</td><td>Pemilik hanya menerima konfirmasi pembayaran dari sistem, bukan screenshot.</td></tr>
+</table></div></div></section>
+</main>
+
+<footer class="ft"><div class="w">Prototype demo MyKos, Design Thinking KP I Kelompok 4, Universitas Surabaya. Data fiktif. Mitra pembayaran, tim verifikator, dan syarat jaminan masih perlu ditetapkan.</div></footer>
+
+<dialog id="dt"></dialog>
+<dialog id="lg"><div class="dh"><h3>Masuk</h3><button class="b g" onclick="lg.close()" aria-label="Tutup">✕</button></div>
+<div class="db"><label>Email UBAYA<br><input id="em" type="email" placeholder="nama@std.ubaya.ac.id" style="width:100%"></label>
+<div id="le" class="al" hidden>Gunakan email dengan domain ubaya.ac.id.</div>
+<button class="b" onclick="doLogin()">Masuk</button><p class="sm mu" style="margin:0">Demo saja: tidak ada data yang dikirim atau disimpan.</p></div></dialog>
+<dialog id="bk"></dialog>
+
+<script>
+const rp=n=>"Rp"+n.toLocaleString("id-ID");
+const LV=["","Terdaftar","Terverifikasi Lapangan","Terbukti Penghuni"];
+const L=[
+{id:1,n:"Kost Putri Sakura",l:3,p:1200000,km:2.1,r:4.8,rv:120,f:["AC","Wi-Fi","KM dalam"],d:3,fee:100000,dep:600000,e:"🌸",g:"linear-gradient(135deg,#9db8ff,#dbe6ff)"},
+{id:2,n:"Kost Putra Sejahtera",l:2,p:950000,km:1.8,r:4.6,rv:98,f:["AC","Wi-Fi","Dapur"],d:5,fee:80000,dep:475000,e:"🛏️",g:"linear-gradient(135deg,#a6e3c8,#dff6ec)"},
+{id:3,n:"Kost Melati Ungu",l:2,p:1500000,km:1.2,r:4.7,rv:41,f:["AC","KM dalam","Parkir"],d:9,fee:120000,dep:750000,e:"🪴",g:"linear-gradient(135deg,#d3b8ff,#efe5ff)"},
+{id:4,n:"Kost Harmoni",l:3,p:1750000,km:0.9,r:4.9,rv:76,f:["AC","Wi-Fi","KM dalam","Parkir"],d:2,fee:150000,dep:875000,e:"🏠",g:"linear-gradient(135deg,#ffd29a,#fff0d8)"},
+{id:5,n:"Kost Hemat Bahagia",l:1,p:700000,km:3.4,r:4.1,rv:0,f:["Wi-Fi","Parkir"],d:20,fee:60000,dep:350000,e:"🚲",g:"linear-gradient(135deg,#c6d0e6,#eef1f8)"},
+{id:6,n:"Kost Teduh",l:1,p:1100000,km:2.7,r:4.3,rv:0,f:["AC","Wi-Fi"],d:6,fee:90000,dep:550000,e:"🌿",g:"linear-gradient(135deg,#b6e7a8,#e9f8e4)"}];
+const RV=[["Penghuni terverifikasi UBAYA","Foto sesuai aslinya dan pemilik cepat membalas."],["Penghuni terverifikasi UBAYA","Harga sama seperti di aplikasi, tidak ada biaya tambahan."]];
+const FAC=["AC","Wi-Fi","KM dalam","Parkir","Dapur"];
+const F={q:"",max:0,fac:new Set(),ver:false,sort:"km"};let user=null;
+const $=s=>document.querySelector(s);
+const dots=n=>`<span class="dots" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
+function render(){
+ const a=L.filter(x=>(!F.q||x.n.toLowerCase().includes(F.q))&&(!F.max||x.p<=F.max)&&(!F.ver||x.l>=2)&&[...F.fac].every(f=>x.f.includes(f))).sort((a,b)=>F.sort==="r"?b.r-a.r:a[F.sort]-b[F.sort]);
+ $("#res").innerHTML=a.length?a.map(x=>`<article class="card" tabindex="0" role="button" aria-label="Buka ${x.n}" onclick="op(${x.id})" onkeydown="if(event.key==='Enter')op(${x.id})"><div class="im" style="background:${x.g}">${x.e}<span class="bd l${x.l}">${LV[x.l]}</span></div><div class="cb"><b>${x.n}</b><div class="mu sm">${dots(x.l)} ★ ${x.r} (${x.rv}) · ${x.km} km dari UBAYA</div><div class="pr">${rp(x.p)}<small>/bulan</small></div><div class="ch">${x.f.map(f=>`<i>${f}</i>`).join("")}</div><div class="sm mu">${x.d>14?`<span class="w2">Info belum diperbarui ${x.d} hari</span>`:`Kamar diperbarui ${x.d} hari lalu`}</div></div></article>`).join(""):`<div class="empty">Tidak ada kos yang cocok. Longgarkan filter harga atau fasilitas.</div>`;
+}
+$("#fc").innerHTML=FAC.map(f=>`<button class="chip" aria-pressed="false" data-f="${f}">${f}</button>`).join("");
+$("#fc").onclick=e=>{const b=e.target.closest("[data-f]");if(!b)return;const on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",on);on?F.fac.add(b.dataset.f):F.fac.delete(b.dataset.f);render()};
+$("#q").oninput=e=>{F.q=e.target.value.toLowerCase().trim();render()};
+$("#mx").onchange=e=>{F.max=+e.target.value;render()};
+$("#so").onchange=e=>{F.sort=e.target.value;render()};
+$("#vo").onchange=e=>{F.ver=e.target.checked;render()};
+$("#th").onclick=()=>{const r=document.documentElement,d=getComputedStyle(r).colorScheme==="dark";r.dataset.theme=d?"light":"dark"};
+function openLogin(){$("#le").hidden=true;lg.showModal()}
+function doLogin(){const v=$("#em").value.trim().toLowerCase();if(!v.endsWith("ubaya.ac.id")||!v.includes("@")){$("#le").hidden=false;return}user=v;$("#lgb").textContent="Halo, "+v.split("@")[0];lg.close()}
+function op(id){
+ const x=L.find(k=>k.id===id),tot=x.p+x.fee+x.dep;
+ dt.innerHTML=`<div class="dh"><h3>${x.n}</h3><button class="b g" onclick="dt.close()" aria-label="Tutup">✕</button></div><div class="db">
+ <div><span class="tier">${dots(x.l)}${LV[x.l]}</span> <span class="sm mu">${x.l>1?"Terakhir diverifikasi tim survei: contoh 2 Nov 2026":"Identitas pemilik terverifikasi, belum disurvei tim"}</span></div>
+ <div class="pano" role="img" aria-label="Placeholder tur virtual 360 derajat, geser ke samping"><div style="background:${x.g}"><span>Ruang depan</span><span>Kamar ${x.e}</span><span>Kamar mandi</span></div></div>
+ <p class="sm mu" style="margin:-8px 0 0">Geser ke samping. Pada versi asli, foto 360° diambil surveyor lewat aplikasi dengan lokasi dan waktu.</p>
+ ${x.d>14?`<div class="al">Info kamar belum diperbarui ${x.d} hari. Tanyakan ketersediaan lewat chat sebelum memesan.</div>`:`<div class="ok">Kamar tersedia. Diperbarui ${x.d} hari lalu.</div>`}
+ <div class="tw"><table style="min-width:0"><tr><td>Sewa bulan pertama</td><td>${rp(x.p)}</td></tr><tr><td>Listrik dan air</td><td>${rp(x.fee)}</td></tr><tr><td>Deposit (dikembalikan)</td><td>${rp(x.dep)}</td></tr><tr><th>Total di awal</th><th>${rp(tot)}</th></tr></table></div>
+ <div><b>Review penghuni</b>${x.rv?RV.map(r=>`<p style="margin:6px 0 0"><span class="mu sm">${r[0]}</span><br>★ ${r[1]}</p>`).join(""):`<p class="mu" style="margin:6px 0 0">Belum ada review. Review hanya dari penghuni yang bertransaksi lewat MyKos.</p>`}</div>
+ <div class="cht"><b>Chat dengan pemilik</b><div class="msgs" id="ms"><div class="m x">Ngobrol dan bayar hanya di MyKos. MyKos tidak pernah meminta DP lewat WA atau Google Form.</div></div>
+ <div class="fr"><input id="ci" style="flex:1" placeholder="Tulis pesan…" aria-label="Pesan"><button class="b s" onclick="send(${id})">Kirim</button></div></div>
+ <div class="fr"><button class="b" onclick="book(${id})">Ajukan sewa aman</button><button class="b g" onclick="rep()">Laporkan listing</button></div><div id="rp" class="ok" hidden>Laporan diterima. Tim moderasi menindaklanjuti dalam target 24 jam.</div></div>`;
+ dt.showModal();
+}
+function send(id){
+ if(!user){openLogin();return}
+ const i=$("#ci"),t=i.value.trim();if(!t)return;const m=$("#ms");
+ m.insertAdjacentHTML("beforeend",`<div class="m u"></div>`);m.lastChild.textContent=t;i.value="";
+ if(/(\d[\s.-]?){8,}|rekening|transfer|\bwa\b|whatsapp|https?:|www\.|\.com|\bdm\b/i.test(t))m.insertAdjacentHTML("beforeend",`<div class="m x">Peringatan: jangan bagikan nomor rekening, nomor HP, atau link luar, dan jangan transfer di luar MyKos. Pesan ini ditandai untuk tim keamanan.</div>`);
+ else setTimeout(()=>{m.insertAdjacentHTML("beforeend",`<div class="m o">Halo, terima kasih. Kamar masih tersedia, silakan ajukan sewa lewat aplikasi.</div>`);m.scrollTop=m.scrollHeight},700);
+ m.scrollTop=m.scrollHeight;
+}
+function rep(){$("#rp").hidden=false}
+const S=[["Ajukan sewa dan bayar di aplikasi","Dana ditahan lewat mitra pembayaran berlisensi. Belum sampai ke pemilik."],["Pindah dan konfirmasi di lokasi","Kamu foto kamar di lokasi lalu menekan konfirmasi. Pemilik tidak bisa menekannya."],["Dana ditahan 48 jam","Waktu untuk melapor jika kondisi tidak sesuai."],["Dana cair ke pemilik","Masuk ke rekening yang namanya sama dengan pemilik terverifikasi."]];
+function book(id){
+ if(!user){openLogin();return}
+ const x=L.find(k=>k.id===id);let s=0,issue=false;
+ const draw=()=>{bk.innerHTML=`<div class="dh"><h3>Sewa aman: ${x.n}</h3><button class="b g" onclick="bk.close()" aria-label="Tutup">✕</button></div><div class="db"><ol class="st">${S.map((t,i)=>`<li class="${i<s?"d":i===s?"c":""}"><b>${t[0]}</b><div class="sm mu">${t[1]}</div></li>`).join("")}</ol>
+ ${issue?`<div class="al">Dana tetap ditahan. Tim MyKos memediasi dengan target respons 24 jam. Jika kondisi jelas tidak sesuai, dana dikembalikan sesuai syarat jaminan.</div>`:s>=4?`<div class="ok">Selesai. Kamu bisa menulis review sebagai penghuni terverifikasi.</div>`:`<div class="fr"><button class="b" id="nx">Simulasikan langkah berikutnya</button>${s>=1&&s<=2?`<button class="b g" id="is">Ada masalah</button>`:""}</div>`}
+ <p class="sm mu" style="margin:0">Simulasi alur. Pembayaran sungguhan belum tersedia.</p></div>`;
+ const n=bk.querySelector("#nx"),i=bk.querySelector("#is");if(n)n.onclick=()=>{s++;draw()};if(i)i.onclick=()=>{issue=true;draw()}};
+ draw();dt.close();bk.showModal();
+}
+render();
+</script>
+</body>
+</html>
